@@ -26,15 +26,15 @@ export default{
         return axios.get("https://pokeapi.co/api/v2/pokemon/" + name); //restituisce singolo pokemon in base al nome
     },
     searchPokemon(text){
-        if(text.lenght < 3 || !text){
+        if(text.length < 2 || !text){
             //se il valore è minore di 3 o non esiste il testo restituiamo una promive con un array vuoto
             return new Promise(resolve => {
                 resolve([]);
             })
-        }
+        }else{
         return axios.get("https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1000").then(data => {
             //se la string text corrisponde all'inizio del nome del pokemon allora torno l'elemento, indexOf ritorna il primo indice a cui c'è l'elemento passato
             return data.data.results.filter((element => element.name.indexOf(text) == 0)).map(element => element.name);
-        });
+        });}
     }
 }
