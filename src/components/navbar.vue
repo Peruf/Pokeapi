@@ -1,7 +1,7 @@
 <template>
     <md-app-toolbar class="md-primary">
         <span class="md-title">Gotta catch 'em all!</span> 
-        <md-button to="/login" class="md-primary">Login</md-button>
+        <!--<md-button to="/login" class="md-primary md-flat">Login</md-button>-->
     </md-app-toolbar>  
 </template>
 

@@ -22,4 +22,14 @@ export default {
 
 <style>
 
+.capitalize {
+  text-transform: capitalize;
+}
+.upper{
+  text-transform: uppercase;
+}
+.nomepkm{
+  padding: 1em;
+  padding-top: 2em;
+}
 </style>
