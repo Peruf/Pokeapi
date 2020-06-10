@@ -3,11 +3,11 @@
       <md-list>
           <!-- Mi creo la lista dei pokemon dove ogni elemento sarà un link al pokemon e verrà visualizzato il nome-->
           <div v-for="pokemon in pokemons" :key="pokemon.name">
-              <!-- ogni pokemon in lista sarà un pulsante per andare alla pagina del singolo pokemon -->
-              <md-list-item :to="'/pokemon/' + pokemon.name">
-                  <span class="capitalize">{{ pokemon.name }}</span>
-              </md-list-item>
-              <md-divider></md-divider>
+            <!-- ogni pokemon in lista sarà un pulsante per andare alla pagina del singolo pokemon -->
+            <md-list-item :to="'/pokemon/' + pokemon.name">
+                <span class="capitalize">{{ pokemon.name }}</span>
+            </md-list-item>
+            <md-divider></md-divider>
           </div>
       </md-list>
       <!-- creo un infinite scroll -->
@@ -32,6 +32,7 @@ export default {
         //quando si crea la pagina faccio una promise per recuperare e popolare la lista pokemons
         dataservice.getPokemons().then((data) => {
             this.pokemons = data.data.results;
+            console.log(data);
         });
     },
     methods: {

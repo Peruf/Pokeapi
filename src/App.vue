@@ -30,6 +30,6 @@ export default {
 }
 .nomepkm{
   padding: 1em;
-  padding-top: 2em;
+  margin-top: 1em !important;
 }
 </style>

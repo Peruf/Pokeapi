@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueMaterial from 'vue-material'
 import App from './App.vue'
 import router from './router.js'
+
 /*import VueRouter from 'vue-router'
 import Login from './pages/login.vue'*/
 import dataservice from '@/dataservice.js'

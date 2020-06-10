@@ -2,12 +2,12 @@
   <div class="md-layout md-alignment-center-center">
       <!-- voglio che i pokemon siano una card -->
       <md-card class="md-layout-item" v-if="pokemon">
-          <md-card-header>
-            <md-card-media md-medium>
+          <md-card-header class="md-layout md-alignment-center-left">
+            <md-card-media md-medium class="md-layout">
                 <img :src="pokemon.sprites.front_default"> <!-- url dinamico del pokemon -->
             </md-card-media>
             <md-card-header-text>
-                <span class="md-title capitalize nomepkm"><b>{{pokemon.name}}</b></span> <!-- prendo il nome del pokemon -->
+                <span class="md-title md-layout capitalize"><b>{{pokemon.name}}</b></span> <!-- prendo il nome del pokemon -->
             </md-card-header-text>  
           </md-card-header>
           <md-card-content>
@@ -40,10 +40,20 @@ export default {
             pokemon: null,
         }
     },
+    watch: {
+        $route: function(){
+            this.load();
+        }
+    },
     created: function(){
-        dataservice.getPokemon(this.$route.params.name).then((data) => {
-            this.pokemon = data.data;
-        });
+        this.load();
+    },
+    methods: {
+        load: function(){
+            dataservice.getPokemon(this.$route.params.name).then((data) => {
+                this.pokemon = data.data;
+            });
+        }
     }
 }
 </script>
