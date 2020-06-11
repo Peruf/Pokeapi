@@ -32,4 +32,7 @@ export default {
   padding: 1em;
   margin-top: 1em !important;
 }
+.red{
+  color: red;
+}
 </style>

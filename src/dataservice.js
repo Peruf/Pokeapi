@@ -1,4 +1,14 @@
 import axios from 'axios' //npm i axios per installarlo
+import firebase from 'firebase/app' //npm install firebase
+import 'firebase/firestore'
+
+firebase.initializeApp({
+    apiKey: "AIzaSyBkUqZn-4DSJMLEYQe5iaNTXMRSNVhbBOg",
+    authDomain: "pokemon-4f47b.firebaseapp.com",
+    projectId: "pokemon-4f47b",
+});
+
+var db = firebase.firestore();
 
 export default{
     
@@ -36,5 +46,33 @@ export default{
             //se la string text corrisponde all'inizio del nome del pokemon allora torno l'elemento, indexOf ritorna il primo indice a cui c'è l'elemento passato
             return data.data.results.filter((element => element.name.indexOf(text) == 0)).map(element => element.name);
         });}
-    }
+    },
+    getVote(name){
+        return db.collection('voti').where('nome', '==', name).get().then((data) => {
+            let sum = 0;
+            let username = localStorage.getItem('username');
+            let userVote = null;
+            let avg = 0;
+            data.forEach(doc => {
+                sum += doc.data().voto;
+                if(doc.data().username === username){
+                    userVote = doc.data().voto;
+                }
+            });
+            if(data.size != 0){ avg = sum/data.size; }
+            else avg = null;
+            return{
+                total: data.size,
+                avg: avg,
+                userVote: userVote
+            };
+        });
+    },
+    setVote(name, valore){
+        return db.collection('voti').doc().set({
+            voto: valore,
+            nome: name,
+            username: localStorage.getItem('username')
+        })
+    },
 }

@@ -4,6 +4,7 @@ import Vue from 'vue'
 import Login from './pages/login.vue'
 import PokemonList from './pages/pokemonlist.vue'
 import Pokemon from './pages/pokemon.vue'
+
 //import dataservice from '@/dataservice.js'
 
 Vue.use(VueRouter)

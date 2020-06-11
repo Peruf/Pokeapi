@@ -11,7 +11,7 @@
                         <md-input v-model="username"></md-input>
                     </md-field>
                 </md-card-content>
-                    <md-card-action>
+                    <md-card-action name="login">
                         <md-button class="md-accent md-raised" :disabled="!username" @click="signIn()">Sign in</md-button>
                     </md-card-action>
             </md-card-area>
